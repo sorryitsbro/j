@@ -1,0 +1,502 @@
+Programs for Module 2
+1. XYZ shopping mall wants to distribute lucky coupon for its customers. Each lucky coupon has some
+prize amount. The mall executive wants to pick 100 order numbers randomly. The order number lies
+between 1000 and 9999. Design a java application which helps the executive to determine the winners
+of lucky coupon. The customer is winner if order number is palindrome and if it belongs to those 100
+randomly picked one.
+Program
+
+
+import java.util.Random;
+public class Array {
+public static void main(String args[]) {
+int min = 1000;
+int max = 9999;
+int ordernum[] = new int[100];
+Random r = new Random();
+for(int i =0; i<100;i++)
+{
+ordernum[i] = r.nextInt((max - min) + 1) + min;
+}
+for(int i=0; i < ordernum.length; i++)
+{
+int number = ordernum[i];
+int reversedNumber = 0;
+int temp=0;
+while(number > 0)
+{
+temp = number % 10;
+number = number / 10;
+reversedNumber = reversedNumber * 10 + temp;
+}
+if(ordernum[i] == reversedNumber)
+System.out.println("The customer with order number"+" "+ordernum[i]+" "+ "won the lucky
+coupon");
+}
+}
+}
+Output
+The customer with order number 4224 won the lucky coupon
+The customer with order number 8888 won the lucky coupon
+
+
+
+
+
+
+
+2. Mr Ram has gathered the requirements of sports accessories for Team A and Team B as shown
+below. The cost of sports accessories are given as below. Design a java application to find the total cost
+of accessories for Team A and Team B separately
+Teams Balls Bats Gloves
+Team -A 12 45 15
+Team -B 15 38 17
+Equipment
+Name
+Cost
+Balls 9$
+Bats 80$
+Gloves 60$
+
+Program
+
+import java.util.Scanner;
+public class Lab3
+{
+public static void main(String args[])
+{
+int itemlist[][] = new int[2][3];
+int totalcost[]= new int[2];
+int cost[] = {9,80,60};
+Scanner s = new Scanner(System.in);
+for(int i=0;i<2;i++)
+{
+System.out.println("Enter the quantity of balls, bats and gloves for Team" + (i+1));
+for(int j=0;j<3;j++)
+{
+itemlist[i][j]= s.nextInt();
+}
+}
+for(int i=0;i<2;i++)
+{
+for(int j=0;j<3;j++)
+{
+totalcost[i]=totalcost[i]+ itemlist[i][j]*cost[j];
+}
+}
+System.out.println("The total bill for Team A and Team B is as follows");
+System.out.println("For Team A " + totalcost[0]);
+System.out.println("For Team B " + totalcost[1]);
+}
+}
+
+
+Output
+Enter the quantity of balls, bats and gloves for Team1
+2 3 4
+Enter the quantity of balls, bats and gloves for Team2
+1 2 4
+The total bill for Team A and Team B is as follows
+For Team A 498
+For Team B 4609
+
+
+
+
+
+
+
+3. Mr John is working as data entry operator in company XYZ. He wants to gather the information
+about the new employees joining the organization. Design a java application to read and display the
+information about n employees.
+Program
+
+
+import java.util.Scanner;
+class Employee
+{
+int id,age;
+String name;
+long salary;
+void getData()
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter Employee Id : ");
+id = sc.nextInt();
+System.out.println("Enter Employee Name : ");
+name = sc.next();
+System.out.print("Enter Employee Age : ");
+age = sc.nextInt();
+System.out.print("Enter Employee Salary : ");
+salary = sc.nextLong();
+}
+void putData()
+{
+System.out.println(id + "\t\t" +name + "\t\t" +age + "\t\t"+salary);
+}
+}
+public class EmployeeObj
+{
+public static void main(String args[])
+{
+int n;
+Scanner s = new Scanner(System.in);
+System.out.println("Enter the number of employees");
+n=s.nextInt();
+Employee[] Emp = new Employee[n];
+int i;
+for(i=0;i<n;i++)
+Emp[i] = new Employee(); // Allocating memory to each object
+for(i=0;i<n;i++)
+{
+System.out.println("Enter details of Employee " + (i+1));
+Emp[i].getData();
+}
+System.out.println("Details of Employees\n");
+for(i=0;i<n;i++)
+Emp[i].putData();
+}
+}
+
+
+
+Output
+Enter the number of employees
+2
+Enter details of Employee 1
+Enter Employee Id :
+111
+Enter Employee Name :
+ram
+Enter Employee Age : 33
+Enter Employee Salary : 45000
+Enter details of Employee 2
+Enter Employee Id :
+222
+Enter Employee Name :
+Sham
+Enter Employee Age : 45
+Enter Employee Salary : 78800
+Details of Employees
+111 ram 33 45000
+222 Sham 45 78800
+
+
+
+
+
+4. Mr John is office executive in Engineering college. He wants to count the number of admissions on
+each day branch wise. Design a java application which counts the number of students admitted in CSE,
+ISE and ECE branch depending upon the roll number allocated to the student. The format of roll
+number is as follows. Example : 20221CSE001.
+RollNumber Format : year-1-branch name-last three digits of roll number
+Program
+
+
+
+import java.util.*;
+public class Stringprogram1 {
+public static void main(String args[]) {
+int countcse,countece,countise;
+countcse=0;
+countece=0;
+countise=0;
+Scanner s = new Scanner(System.in);
+String rollnumbers[] = new String[10];
+System.out.println("Enter the roll number of 10 students");
+for(int i = 0; i<10;i++)
+{
+rollnumbers[i] = s.next();
+}
+for(int i = 0; i<10; i++)
+{
+String str = rollnumbers[i].toLowerCase();
+String substringstr = str.substring(5,8);
+if(substringstr.equals("cse"))
+countcse = countcse+1;
+else if(substringstr.equals("ise"))
+countise = countise+1;
+else
+countece = countece+1;
+}
+System.out.println("Total CSE students " + countcse);
+System.out.println("Total ISE students " + countise);
+System.out.println("Total ECE students " + countece);
+}
+}
+
+
+
+
+Output
+Enter the roll number of 10 students
+20221cse001
+20221cse002
+20221cse003
+20221cse004
+20221cse005
+20221cse006
+20221CSE007
+20221ece001
+20221ece002
+20221ise200
+Total CSE students 7
+Total ISE students 1
+Total ECE students 2
+
+
+
+
+
+
+5. XYZ bank wants to generate a 16 digit transaction password for the customers during each
+transaction. The transaction password is constructed based on the username and some random digits.
+Design a java application which generates a 16 digit transaction password using following rule
+Note : Transaction Password = first half of user name + random digits + second half of user name
+and total length of Transaction Password is 16. The entered username should not contain any blank
+spaces.
+Program:
+
+
+
+import java.util.*;
+public class Stringprogram1 {
+public static void main(String args[]) {
+Scanner s = new Scanner(System.in);
+Random r = new Random();
+StringBuffer tpassword = new StringBuffer();
+int min=0;
+int max=9;
+String name,firsthalf,secondhalf;
+System.out.println("Enter username : ");
+name = s.next();
+int len = name.length();
+System.out.println("Length of username is " + len);
+firsthalf = name.substring(0,len/2);
+secondhalf = name.substring(len/2,len);
+tpassword.append(firsthalf);
+for(int i = 0;i< 16-len; i++)
+{
+int num = r.nextInt((max - min) + 1) + min;
+tpassword.append(num);
+}
+tpassword.append(secondhalf);
+System.out.println("16 digits transaction password is : " + tpassword);
+}
+}
+
+
+
+
+Output
+Enter username :
+reshmashet
+Length of username is 11
+16 digits transaction password is : resha68585mashet
+
+
+
+
+6. The Royal Sea International provides Passenger Ships and Container Ships. Based on the
+requirement of the user display suitable ship and its details. Design a Java application based on
+inheritance for the same.
+Program
+
+
+import java.util.Scanner;
+class Vehicle
+{
+String vehiclename;
+void display()
+{
+System.out.println("Vehicle Name is :" + vehiclename);
+}
+}
+class WaterVehicle extends Vehicle
+{
+int length_of_waterline;
+int length;
+void display()
+{
+super.display();
+System.out.println("Length of Water line :" + length_of_waterline);
+System.out.println("Length :"+ length);
+}
+}
+class Passengership extends WaterVehicle
+{
+int no_of_decks, no_of_crew,no_of_lifeboats;
+String restaurant_name;
+String hospital_name;
+Passengership( int decks, int crew, int lifeboat, String r)
+{
+no_of_decks = decks;
+no_of_crew = crew;
+no_of_lifeboats = lifeboat;
+restaurant_name = r;
+}
+void display()
+{
+super.display();
+System.out.println("No of decks :" + no_of_decks);
+System.out.println("No of crew members :" + no_of_crew);
+System.out.println("No of Life Boats :" + no_of_lifeboats);
+System.out.println("Restaurant Name :" + restaurant_name);
+}
+}
+class Containership extends WaterVehicle
+{
+int no_of_holds;
+String container_material;
+String container_type;
+Containership ( int holds, String m, String t)
+{
+no_of_holds= holds;
+container_material = m;
+container_type = t;
+}
+void display()
+{
+super.display();
+System.out.println("No of Holds :" + no_of_holds);
+System.out.println("Container Material :" + container_material);
+System.out.println("Container Type :" + container_type);
+}
+}
+public class InheritanceDemo
+{
+public static void main(String args[])
+{
+Scanner s = new Scanner(System.in);
+System.out.println("Enter your purpose 1. Travel on Ship 2. Transportation of Goods");
+int ch = s.nextInt();
+if(ch==1)
+{
+Passengership ship = new Passengership( 10, 100,1000,"Royal Food");
+ship.vehiclename = "Oasis of Seas";
+ship.length_of_waterline = 1000;
+ship.length = 1200;
+ship.display();
+}
+else
+{
+Containership ship = new Containership(6,"Steel","Refrigerated");
+ship.vehiclename = "MSC Oscar";
+ship.length_of_waterline = 2000;
+ship.length = 2400;
+ship.display();
+}
+}
+}
+
+
+
+
+Output
+Enter your purpose 1. Travel on Ship 2. Transportation of Goods
+1
+Vehicle Name is :Oasis of Seas
+Length of Water line :1000
+Length :1200
+No of decks :10
+No of crew members :100
+No of Life Boats :1000
+Restaurant Name :Royal Food
+
+
+
+7. The shopping website named Shopify wants to offer supercoins for the customer based on thier
+purchases. The elite customer earns 2 supercoins for each 100 Rs spent and icon customer earns 4
+supercoins for each 100 Rs spent. Design a java application which calculates the total super coins
+collected yearly by the customer on the basis of amount spent in each month.
+Program
+
+
+
+import java.util.Scanner;
+class EliteCustomer
+{
+int no_of_supercoins;
+double[] amount_spent = new double[12];
+double total_amount=0;
+void calculatetotalamount()
+{
+Scanner s = new Scanner(System.in);
+int i;
+for(i=0;i<12;i++)
+{
+System.out.println("Enter the amount spent on orders in Month " + (i+1));
+amount_spent[i] = s.nextDouble();
+}
+for(i=0;i<12;i++)
+{
+total_amount = total_amount+ amount_spent[i];
+}
+System.out.println("Total amount spent in a year is " + total_amount);
+}
+void calculatesupercoins()
+{
+System.out.println("You are eligible for 2 supercoins per 100 Rs spent");
+no_of_supercoins = (int)(total_amount/100)*2;
+System.out.println("The number of supercoins earned is " + no_of_supercoins);
+}
+}
+class IconCustomer extends EliteCustomer
+{
+void calculatesupercoins() //overridden method
+{
+System.out.println("You are eligible for 4 supercoins per 100 Rs spent");
+no_of_supercoins = (int)(total_amount/100)*4;
+System.out.println("The number of supercoins earned is " + no_of_supercoins);
+}
+}
+public class SuperCoins
+{
+public static void main(String args[])
+{
+Scanner s = new Scanner(System.in);
+System.out.println("Enter the customer type 1. Elite or 2. Icon");
+int ch = s.nextInt();
+if(ch==1)
+{
+EliteCustomer customer = new EliteCustomer();
+customer.calculatetotalamount();
+customer.calculatesupercoins();
+}
+else
+{
+IconCustomer customer = new IconCustomer();
+customer.calculatetotalamount();
+customer.calculatesupercoins();
+}
+}
+}
+
+
+
+Output
+Enter the customer type 1. Elite or 2. Icon
+2
+Enter the amount spent on orders in Month 1
+1000
+Enter the amount spent on orders in Month 2
+1000
+Enter the amount spent on orders in Month 3
+1000
+Enter the amount spent on orders in Month 4
+1000
+Enter the amount spent on orders in Month 5
+0
+Enter the amount spent on orders in Month 6
+0
+Enter the amount spent on orders in Month 7
+0
+Enter the amount spent on orders in Month 8
+2000
+Enter the amount spent on orders in Month 9
+4000
+Enter the amount spent on orders in Month 10
+0
+Enter the amount spent on orders in Month 11
+0
+

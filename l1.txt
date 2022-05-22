@@ -1,0 +1,558 @@
+
+Programs for Module 1
+1. In an Examination hall students of second and third year sit in odd and even number
+positions consecutively. The teacher asks one of the students to find the sum of even and
+odd positions separately. The total seating capacity of an exam hall is 100. Develop a
+software application to perform the above operations. (Task01 – L1)
+Solution:
+
+
+public class Odd_Even
+{
+public static void main(String args[])
+{
+int sumeven=0, sumodd=0;
+for(int i=1;i<=100;i++)
+{
+if(i%2==0)
+{
+sumeven = sumeven+i;
+}
+else
+{
+sumodd = sumodd+i;
+}
+}
+System.out.println("The sum of even positions is "+ sumeven);
+System.out.println("The sum of odd positions is "+ sumodd);
+}
+}
+
+
+
+Output
+The sum of even positions is 2550
+The sum of odd positions is 2500
+
+
+
+
+
+2. A Teacher gives a box containing 5 chits to a student and asks him to pick one chit. Each
+chit contains a arithmetic operation to be performed by the student. The student can pick
+only one chit at a time. The 5 chits contain basic arithmetic operations like addition,
+subtraction, multiplication,division and modulus. Demonstrate the same situation using
+java program. (Task01-L1)
+Solution:
+
+
+import java.util.Scanner;public class ArithmeticDemo {
+public static void main(String[] args) {
+int a,b,c=0;
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter the values of a,b");
+a=sc.nextInt();
+b=sc.nextInt();
+System.out.println("1:Addition\n2:Substraction\n3:Multiplication\
+n4:Division");
+System.out.println("Enter choice");
+int ch=sc.nextInt();
+switch(ch)
+{
+case 1: c=a+b;
+break;
+case 2: c=a-b;
+break;
+case 3: c=a*b;
+break;
+case 4: if(b!=0)
+{
+c=a/b;
+break;
+}
+else
+{
+System.out.println("Division is not possible");
+break;
+}
+default: System.out.println("Invalid choice");
+break;
+}
+System.out.println("The result is "+c);
+}
+}
+
+
+Output:
+Enter the values of a,b
+20 3
+1:Addition
+2:Substraction
+3:Multiplication
+4:DivisionEnter choice
+3
+The result is 60
+
+
+
+
+
+3. Swiggy App is celebrating its birthday, so it wants to give 80% discount for those
+customers who have order number which is prime and others will get 50% discount. Help
+the application to identify the discounted rate for customers. Write suitable java program.
+(Task01-L2)
+Solution
+
+
+import java.util.Scanner;
+public class Prime {
+public static void main(String[] args) {
+int n, i;
+boolean flag=false;
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter order number");
+n = sc.nextInt();
+if(n==1)
+System.out.println("The customer will get 50% discount");
+else
+{
+for(i=2;i<n;i++)
+{
+if(n%i==0)
+{
+System.out.println("The customer will get 50%
+discount");
+flag=true;
+break;
+}
+}
+if(flag==false)
+System.out.println("The customer will get 80% discount");
+}
+}
+}
+
+
+
+
+Output
+Enter order number
+9
+
+
+4. The customer will get 50% discount4. Shyam has coding competition in his school, he has to draw the following pattern.
+Suggest a solution to Shyam for winning the competition. (Task01 – L2)
+*
+***
+*****
+*******
+*********
+Solution
+
+
+import java.util.Scanner;
+public class Pattern
+{
+public static void main(String args[]){
+int n, s, i, j;
+Scanner scan = new Scanner(System.in);
+System.out.println("Enter number of rows: ");
+n=scan.nextInt();
+for(i = 1; i <= n; i++)
+{
+//for loop for displaying space
+for(s = i; s < n; s++)
+{
+System.out.print(" ");
+}
+//for loop to display star equal to row number
+for(j = 1; j <= (2 * i - 1); j++)
+{
+System.out.print("*");
+}
+// ending line after each rowSystem.out.println();
+}
+}
+}
+Output
+
+
+
+
+Enter number of rows:
+5
+*
+***
+*****
+*******
+*********
+
+
+
+
+
+5. Define a class called CommandLine, develop a program in Java that accepts two floats
+and integers as its command line arguments and perform addition, multiplication,
+subtraction and division and display the result. (Task02 – L1)
+Solution:
+
+
+class CommandLine{
+public static void main(String args[]){
+int a,b;
+float c,d;
+a=Integer.parseInt(args[0]);
+b=Integer.parseInt(args[1]);
+c=Float.parseFloat(args[2]);
+d=Float.parseFloat(args[3]);
+System.out.println("Integer Arithmetic Operations\n");
+System.out.println("Addition is " +(a+b));
+System.out.println("Subtraction is " +(a-b));
+System.out.println("Division is " +(a/b));
+System.out.println("Multiplication is " +(a*b));
+System.out.println("Real Arithmetic Operations\n");
+System.out.println("Addition is " +(c+d));
+System.out.println("Subtraction is " +(c-d));
+System.out.println("Division is " +(c/d));System.out.println("Multiplication is " +(c*d));
+}}
+
+
+
+
+Output:
+ javac CommandLine.java
+ java CommandLine 10 20 6.5 4.5
+Integer Arithmetic Operations
+Addition: 30
+Subtraction: -10
+Multiplication: 200
+Division: 0
+Real Arithmetic Operations
+Addition: 12
+Subtraction: 2.0
+Multiplication: 29.25
+Division: 1.444
+
+
+
+
+
+
+6. A teacher gave a project to student in the classroom to find the area of different shapes.
+A student has to find the area of different shapes based on the choice of different
+parameters and display the results. Demonstrate the same using Java Program (Task02 –
+L1)
+Solution:
+
+
+public class Students
+{
+void area(int x)
+{
+System.out.println("The area of the square is "+Math.pow(x, 2)+" sq units");
+}
+void area(int x, int y)
+{
+System.out.println("The area of the rectangle is "+ (x*y) +" sq units");
+}
+void area(double x)
+{
+double z = 3.14 * x * x;
+System.out.println("The area of the circle is "+z+" sq units");
+}
+public static void main(String args[]){
+Students ob = new Students();
+ob.area(5);
+ob.area(11,12);
+ob.area(2.5);
+}
+}
+
+
+
+Output:
+The area of the square is 25.0 sq units
+The area of the rectangle is 132 sq units
+The area of the circle is 19.625 sq units
+
+
+
+
+
+7. Create a class named 'Rectangle' with two data members- length and breadth and a method to
+calculate the area which is 'length*breadth'. The class has three constructors which are (Task02 –
+L1)
+i -having no parameter - values of both length and breadth are assigned zero.
+ii - having two numbers as parameters - the two numbers are assigned as length and breadth
+respectively.
+iii - having one number as parameter - both length and breadth are assigned that number.
+Now, create objects of the 'Rectangle' class having none, one and two parameters and print their
+areas.
+Solution
+
+import java.util.*;
+class Rectangle
+{
+int length;
+int breadth;
+void area() // method
+{
+int area=length*breadth;
+System.out.println(area);
+}
+Rectangle() // constructor with no parameter
+{
+length=0;
+breadth=0;
+}
+Rectangle(int len)// constructor with one parameter{
+length=len;
+breadth=len;
+}
+Rectangle(int l,int b) // constructor with two parameters
+{
+length=l;
+breadth=b;
+}
+Rectangle(Rectangle r) //copy constructor
+{
+length=r.length;
+breadth=r.breadth;
+}
+public static void main(String args[])
+{
+int len, br;
+Rectangle r1= new Rectangle();
+System.out.print("Area of object r1 : ");
+r1.area();
+Scanner input= new Scanner(System.in);
+System.out.println("Enter the length and breadth");
+len=input.nextInt();
+br=input.nextInt();
+Rectangle r2= new Rectangle(len, br);
+System.out.print("Area of object r2 : ");
+r2.area();
+Rectangle r3= new Rectangle(50);
+System.out.print("Area of object r3 : ");
+r3.area();
+Rectangle r4= new Rectangle(r2);
+System.out.print("Area of object r4 : ");
+r4.area();}}
+
+
+Output:
+Area of object r1 : 0
+Enter the length and breadth
+2 3
+Area of object r2 : 6
+Area of object r3 : 2500
+Area of object r4 : 68. 
+
+
+8. AVR apartments uses a common water tank to supply water for every block. The D block
+uses 20 litres of water and E block uses 40 litres of water every time. Each time the water level
+of the tank reduces based on the usage of each block The maintenance person fills the tank thrice
+with 50litres each time. Display the current water level in the tank.
+Solution:
+
+
+import java.util.Scanner;
+class Dblock
+{
+int u;
+Dblock(int usage) //parameterized constructor
+{
+u = usage;
+}
+}
+class Eblock //parameterized constructor
+{
+int u;
+Eblock(int usage)
+{
+u=usage;
+}
+}
+public class Labexercise3
+{
+public static void main(String args[])
+{
+Scanner s = new Scanner(System.in);
+int maxlevel;
+int currentlevel=0;
+System.out.println("Enter maximum level of tank");
+maxlevel = s.nextInt();
+int choice;
+currentlevel=maxlevel;
+while(currentlevel>= 150)
+{
+System.out.println("Which block used water 1. D Block 2. E Block");
+choice=s.nextInt();
+switch(choice)
+{
+case 1:
+Dblock obj1 = new Dblock(20);
+currentlevel = currentlevel-obj1.u;break;
+case 2:
+Eblock obj2 = new Eblock(40);
+currentlevel= currentlevel-obj2.u;
+break;
+default:
+System.out.println("Invalid choice");
+}
+System.out.println("Currentlevel water level is "+ currentlevel);
+if(currentlevel<=150)
+System.out.println("Call Facility Manager to fill water tank");
+else
+System.out.println("Don't Call Facility Manager to fill water tank");
+}
+}
+}
+
+
+
+Output
+Enter maximum level of tank
+200
+Which block used water 1. D Block 2. E Block
+2
+Currentlevel water level is 160
+Don't Call Facility Manager to fill water tank
+Which block used water 1. D Block 2. E Block
+1
+Currentlevel water level is 140
+Call Facility Manager to fill water tank
+
+
+
+
+
+
+9. The company XYZ has decided to give some bonus only for employees which belong to IT
+department. Hence design an application where you can set same bonus amount and department
+for some employee objects . Depending upon the employee’s salary calculate the final salary
+with bonus. Display company information and employee information separately. Demonstrate
+the same using java program.
+Solution
+
+
+import java.util.*;
+public class Employee {
+double fixedsal;
+double finalsalary;
+int eid;static String company_name,dept_name;
+static double bonus;
+static
+{
+company_name = "XYZ";
+dept_name="IT";
+bonus=10.0;
+}
+void calculatesalary()
+{
+Scanner s = new Scanner(System.in);
+System.out.println("Enter your fixed salary");
+fixedsal = s.nextDouble();
+System.out.println("Enter your Id");
+eid= s.nextInt();
+finalsalary = fixedsal + (bonus/100)*fixedsal;
+}
+static void displaycompanydata()
+{
+System.out.println("Company Name : " + company_name);
+System.out.println("Department Name : " + dept_name);
+System.out.println("Bonus : " + bonus + "%");
+}
+void displayemployeedata()
+{
+System.out.println("Id is : "+eid);
+System.out.println("Final Salary with Bonus : " + finalsalary);
+}
+public static void main(String args[]) {
+displaycompanydata();
+Employee e1 = new Employee();
+Employee e2 = new Employee();
+e1.calculatesalary();
+e1.displayemployeedata();
+e2.calculatesalary();
+e2.displayemployeedata();
+}
+}
+
+
+
+Output
+Company Name : XYZ
+Department Name : IT
+Bonus : 10.0%
+Enter your fixed salary
+40000
+Enter your Id
+111
+Id is : 111
+Final Salary with Bonus : 44000.0
+Enter your fixed salary
+60000
+Enter your Id
+222
+Id is : 222
+Final Salary with Bonus : 66000.0
+
+
+
+
+10. The edubuddy is online learning platform and students can enroll in online courses only
+when they have access-key for the course. Design a java application which checks if the access-
+key entered by the student is valid or invalid and display suitable message. Demonstrate the
+scenario for two student objects.
+Solution
+
+
+
+import java.util.Scanner;
+class Students {
+public int id, key;
+private int accesskey = 1310;
+public void checkaccess(int key)
+{
+if(key == accesskey)
+{
+System.out.println("You are provided the access for this course");
+System.out.println("Duration of access : 3 months");
+}
+else
+{
+System.out.println("Access Key is wrong ");
+System.out.println("You are not provided the access for this course");
+}
+}
+}
+public class Access
+{public static void main(String args[]) {
+Students s1 = new Students();
+Students s2 = new Students();
+Scanner s = new Scanner(System.in);
+System.out.println("Enter your id and key");
+s1.id = s.nextInt();
+s1.key = s.nextInt();
+s1.checkaccess(s1.key);
+System.out.println("Enter your id and key");
+s2.id = s.nextInt();
+s2.key = s.nextInt();
+s2.checkaccess(s2.key);
+}
+}
+
+
+
+Output
+Enter your id and key
+122
+1310
+You are provided the access for this course
+Duration of access : 3 months
+Enter your id and key
+124
+7878
+Access Key is wrong
+You are not provided the access for this course
